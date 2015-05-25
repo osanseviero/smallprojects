@@ -1,0 +1,18 @@
+.container div {
+    display: inline-block;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+.container{
+	height: 500px;
+	width: 500px;
+	margin: 20px auto;
+
+}
+
+
+.change{
+	position: absolute;
+    top: 50%;	
+}
