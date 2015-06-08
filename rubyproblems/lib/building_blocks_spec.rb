@@ -1,4 +1,3 @@
-
 require_relative "building_blocks"
 
 describe "caesar cipher" do
@@ -18,3 +17,10 @@ describe "caesar cipher" do
     expect(caesar_cipher("Za", 27)).to eq("Ab")
   end
 end
+
+describe "stock picker" do
+	it "works with example" do
+		expect(stock_picker([17,3,6,9,15,8,6,1,10])).to eq([1,4])
+	end
+end
+

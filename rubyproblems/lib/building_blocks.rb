@@ -1,5 +1,5 @@
 def caesar_cipher(str, places)
-	vocabulary = [*"A".."Z"] * 2 + [*"a".."z"] * 2
+	vocabulary = [*"A".."Z"] * 2 + [*"a".."z"] * 2 		#We use splat operator for array coercion: 
 	result = ""
 	size = str.length
 	idx = 0
@@ -15,3 +15,9 @@ def caesar_cipher(str, places)
 	end
 	return result
 end
+
+
+
+
+# Problems: http://www.theodinproject.com/ruby-programming/building-blocks?ref=lnav
+# The splat operator: https://endofline.wordpress.com/2011/01/21/the-strange-ruby-splat/
