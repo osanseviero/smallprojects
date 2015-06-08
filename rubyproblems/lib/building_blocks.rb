@@ -1,5 +1,5 @@
 def caesar_cipher(str, places)
-	vocabulary = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxy"
+	vocabulary = [*"A".."Z"] * 2 + [*"a".."z"] * 2
 	result = ""
 	size = str.length
 	idx = 0
@@ -9,11 +9,9 @@ def caesar_cipher(str, places)
 			idx +=1
 		else
 			place = vocabulary.index(str[idx])
-			result = result + vocabulary[place + places]
+			result = result + vocabulary[place + places%26]
 			idx += 1
 		end
 	end
 	return result
 end
-
-puts caesar_cipher("What a toaster!",20)

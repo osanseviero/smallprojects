@@ -14,4 +14,7 @@ describe "caesar cipher" do
   it "works with case example" do
     expect(caesar_cipher("What a string!", 5)).to eq("Bmfy f xywnsl!")
   end
+  it "works with big numbers" do
+    expect(caesar_cipher("Za", 27)).to eq("Ab")
+  end
 end
