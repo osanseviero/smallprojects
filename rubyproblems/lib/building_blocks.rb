@@ -17,6 +17,36 @@ def caesar_cipher(str, places)
 end
 
 
+def stock_picker(arr)
+	# Take every day as a buy day
+		# Then check biggest number from that number as selling day, and pick biggest one
+		# Compare Winning
+		# If bigger than upper answer, keep it
+	win = 0
+	buy = 0
+	sell = 0
+	arr.each.with_index { |buy_value, index|
+		biggest_sell = 0 																			#We reset for the new sell
+		arr.each.with_index{ |sell_value, index2|
+			if (index2 > index) && (sell_value > biggest_sell)	#We just sell after we buy, so i2 > i. Here we check biggest sell
+				biggest_sell = sell_value
+			end
+		}
+		if win < biggest_sell - buy_value
+			buy = buy_value
+			sell = biggest_sell
+			win = biggest_sell - buy_value
+		end
+	}
+	return [arr.index(buy),arr.index(sell)]
+end
+
+
+
+
+
+
+
 
 
 # Problems: http://www.theodinproject.com/ruby-programming/building-blocks?ref=lnav

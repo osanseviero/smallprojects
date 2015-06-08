@@ -20,7 +20,13 @@ end
 
 describe "stock picker" do
 	it "works with example" do
-		expect(stock_picker([17,3,6,9,15,8,6,1,10])).to eq([1,4])
+		expect(stock_picker([17,3,6,9,15,8,6,1,10])).to eq [1,4]
+	end
+	it "works with lowest day at end" do
+		expect(stock_picker([3,6,7,15,2])).to eq [0,3]
+	end
+	it "works with highest day as first" do
+		expect(stock_picker([15,3,6,7,4])). to eq [1,3]
 	end
 end
 
