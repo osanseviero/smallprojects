@@ -69,10 +69,11 @@ module Enumerable
 	end	
 end
 
-	def multiply_els(list)
-		list.my_inject(1) { |product, element| product * element }
-	end
+def multiply_els(list)
+	list.my_inject(1) { |product, element| product * element }
+end
 
+puts multiply_els([1,2,3,4,5])
 
 
 

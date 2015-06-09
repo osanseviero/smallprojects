@@ -88,12 +88,6 @@ describe 'enumerable' do
     end
   end
 
-  describe 'multiply_els method' do
-    it 'multiplies all elements ' do
-      binding.pry
-      expect(multiply_els([2,4,5])).to eq 40
-    end
-  end
 end
 
 
