@@ -1,3 +1,5 @@
+# Reference to problems: http://www.theodinproject.com/ruby-programming/advanced-building-blocks?ref=lnav
+
 def bubble_sort(arr)
 	size = arr.length
 	swap = true
@@ -32,3 +34,13 @@ def bubble_sort_by(arr)
 	end
 	return arr
 end
+
+
+
+
+
+
+
+
+
+
