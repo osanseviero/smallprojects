@@ -1,5 +1,5 @@
 def caesar_cipher(str, places)
-	vocabulary = [*"A".."Z"] * 2 + [*"a".."z"] * 2 		#We use splat operator for array coercion: 
+	vocabulary = [*"A".."Z"] * 2 + [*"a".."z"] * 2 		#We use splat operator for array coercion
 	result = ""
 	size = str.length
 	idx = 0
@@ -41,6 +41,19 @@ def stock_picker(arr)
 	return [arr.index(buy),arr.index(sell)]
 end
 
+def substrings(word,dictionary)
+	# Create every word possible from a word and compare with dictionary
+	result = Hash.new(0)
+	temp_word = ''
+	word.each_char { |char|
+		temp_word += char
+		if dictionary.include? temp_word
+			result[temp_word] += 1
+		end
+	}
+
+	return result
+end
 
 
 
