@@ -30,6 +30,7 @@ module Enumerable
 				return false
 			end
 		}
+		return true
 	end
 
 

@@ -34,5 +34,8 @@ describe 'enumerable' do
     it 'checks if all numbers are positive' do
       expect(@a.my_all? { |a| a > 0 }).to eq true
     end
+    it 'checks a false condition' do
+      expect(@a.my_all? { |a| a == 0 }).to eq false
+    end
 	end
 end
