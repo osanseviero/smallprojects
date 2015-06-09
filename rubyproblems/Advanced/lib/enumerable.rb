@@ -35,9 +35,7 @@ module Enumerable
 
 	def my_any?
 		self.my_each{|x|
-			if yield(x)
-				return true
-			end
+			return true if yield(x)
 		}
 		return false
 	end
