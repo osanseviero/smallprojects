@@ -51,6 +51,17 @@ describe 'enumerable' do
     end
   end
 
+  describe 'my_none? method' do
+    it 'checks if none of the words has length 5' do
+      expect(["ant","cat","bear"].my_none? { |a| a.length == 5 }).to eq true
+    end
+    it 'checks if none of the numbers is bigger than 10' do
+      expect(@a.my_none? { |a| a > 10 }).to eq true
+    end
+     it 'checks a false condition' do
+      expect(@a.my_none? { |a| a == 3 }).to eq false
+    end
+  end
 
 
 

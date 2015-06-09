@@ -26,6 +26,7 @@ module Enumerable
 
 	def my_all?
 		self.my_each{|x|
+		return true unless !yield(x)
 			if !yield(x)
 				return false
 			end
