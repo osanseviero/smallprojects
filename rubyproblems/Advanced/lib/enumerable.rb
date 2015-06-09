@@ -33,6 +33,15 @@ module Enumerable
 		return true
 	end
 
+	def my_any?
+		self.my_each{|x|
+			if yield(x)
+				return true
+			end
+		}
+		return false
+	end
+
 
 
 end

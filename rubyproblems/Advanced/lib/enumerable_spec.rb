@@ -41,14 +41,15 @@ describe 'enumerable' do
 
   describe 'my_any? method' do
     it 'checks if any number is positive' do
-      expect(@a.my_all? { |a| a > 0 }).to eq true
+      expect(@a.my_any? { |a| a > 0 }).to eq true
     end
     it 'checks if any number is even' do
-      expect(@a.my_all? { |a| a % 2 == 0 }).to eq true
+      expect(@a.my_any? { |a| a % 2 == 0 }).to eq true
     end
      it 'checks a false condition' do
-      expect(@a.my_all? { |a| a == 0 }).to eq false
+      expect(@a.my_any? { |a| a == 0 }).to eq false
     end
+  end
 
 
 
