@@ -25,22 +25,20 @@ module Enumerable
 	end
 
 	def my_all?
-		self.my_each{|x|
-		return true unless !yield(x)
-			if !yield(x)
-				return false
-			end
+		self.my_each{|x| return false if !yield(x)
 		}
 		return true
 	end
 
 	def my_any?
-		self.my_each{|x|
-			return true if yield(x)
-		}
+		self.my_each{|x| return true if yield(x)}
 		return false
 	end
 
+	def my_none?
+		self.my_each{|x|return false if yield(x)}
+		return true
+	end
 
 
 end
