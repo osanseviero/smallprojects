@@ -31,8 +31,8 @@ describe "stock picker" do
 end
 
 describe "substrings method" do
-	dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
 	it "works with one word" do
+		dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
 		answer = {
 			'below' => 1,
 			'low' =>1
@@ -50,17 +50,18 @@ describe "substrings method" do
 	it "works with more than one word" do
 		answer =  {
 			"down"=>1, 
-			"how"=>2, 
-			"howdy"=>1,
 			"go"=>1, 
 			"going"=>1, 
+			"how"=>2, 
+			"howdy"=>1,
 			"it"=>2, 
 			"i"=> 3, 
 			"own"=>1,
 			"part"=>1,
 			"partner"=>1,
 			"sit"=>1}
-		expect(substrings("below",dictionary)).to eq answer
+		dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
+		expect(substrings("Howdy partner, sit down! How's it going?",dictionary)).to eq answer
 	end
 
 	it "works with an empty dictionary" do

@@ -42,22 +42,25 @@ def stock_picker(arr)
 end
 
 def substrings(word,dictionary)
-	# Create every word possible from a word and compare with dictionary
-	result = Hash.new(0)
-	temp_word = ''
-	word.each_char { |char|
-		temp_word += char
-		if dictionary.include? temp_word
-			result[temp_word] += 1
-		end
-	}
+	if dictionary.empty?
+		return false
+	end
+	if word.empty? || word == ' '
+		return false
+	end
 
+	result = Hash.new(0)
+	word_as_arr = word.split(" ")
+	dictionary.each{ |dword|
+		word_as_arr.each { |word|
+			if word.downcase.include? dword
+			result[dword] += 1
+		end
+		}
+	}
+	result.keys.sort
 	return result
 end
-
-
-
-
 
 
 
