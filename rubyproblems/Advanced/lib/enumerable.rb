@@ -15,10 +15,23 @@ module Enumerable
 
 	def my_select
 		idx = 0
+		ans = []
 		self.my_each{|x|
-			yield(x)
+			if yield(x)
+				ans << x
+			end
+		}
+		return ans
+	end
+
+	def my_all?
+		self.my_each{|x|
+			if !yield(x)
+				return false
+			end
 		}
 	end
+
 
 
 end

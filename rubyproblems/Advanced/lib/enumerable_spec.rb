@@ -23,9 +23,16 @@ describe 'enumerable' do
 
 	describe 'my_select method' do
     it 'selects numbers bigger than 5' do
-      b = Array.new
-      @a.my_select { |a| b << a>5 }
-      expect(b).to eq [7,10]
+      expect(@a.my_select { |a| a > 5 }).to eq [7,10]
+    end
+    it 'selects even numbers' do
+      expect(@a.my_select { |a| a % 2 == 0 }).to eq [2,4,10]
+    end
+	end
+
+	describe 'my_all? method' do
+    it 'checks if all numbers are positive' do
+      expect(@a.my_all? { |a| a > 0 }).to eq true
     end
 	end
 end
