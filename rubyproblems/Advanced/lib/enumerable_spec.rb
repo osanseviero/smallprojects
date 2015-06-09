@@ -63,6 +63,18 @@ describe 'enumerable' do
     end
   end
 
+  describe 'my_count method' do
+    it 'return the number of elements in array (no parameter)' do
+      expect(@a.my_count).to eq 7
+    end
+    it 'receives one parameter and checks how many elements are equal (number as parameter)' do
+      expect(@a.my_count(10)).to eq 1
+    end
+     it 'checks with a block' do
+      expect(@a.my_count { |a| a%2 == 0 }).to eq 3
+    end
+  end
+
 
 
 
