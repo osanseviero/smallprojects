@@ -75,6 +75,11 @@ describe 'enumerable' do
     end
   end
 
+  describe 'my_map method' do
+    it 'receives a block and raises to the square' do
+      expect((1..4).my_map{|i| i*i}).to eq [1,4,9,16]
+    end
+  end
 
 
 
