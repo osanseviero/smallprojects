@@ -40,6 +40,22 @@ module Enumerable
 		return true
 	end
 
+	def my_count(par=nil)
+		count = 0
+		if block_given?
+			self.my_each{|x| count +=1 if yield(x)}
+		elsif par == nil	
+			self.my_each{|x| count += 1}
+		else
+			self.my_each{|x| count +=1 if x == par}
+		end
+		return count
+	end
+
+
+
+
+
 
 end
 
