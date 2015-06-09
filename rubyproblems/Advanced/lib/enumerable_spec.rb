@@ -1,4 +1,5 @@
 require_relative "enumerable"
+require "pry"
 
 describe 'enumerable' do
   before do
@@ -81,10 +82,19 @@ describe 'enumerable' do
     end
   end
 
+  describe 'my_inject method' do
+    it 'adds all numbers from 5 to 10 (block given)' do
+      expect((5..10).my_inject { |sum, n| sum + n }).to eq 45
+    end
+  end
 
-
-
-
-
-
+  describe 'multiply_els method' do
+    it 'multiplies all elements ' do
+      binding.pry
+      expect(multiply_els([2,4,5])).to eq 40
+    end
+  end
 end
+
+
+

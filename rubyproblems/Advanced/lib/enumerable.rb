@@ -53,7 +53,6 @@ module Enumerable
 	end
 
 	def my_map
-		idx = 0
 		ans = []
 		self.my_each{|x|
 			ans << yield(x)
@@ -61,9 +60,20 @@ module Enumerable
 		return ans
 	end
 
+	def my_inject(init = 0)
+		memo = init
+		self.my_each{|x|
+			memo = yield(memo, x)
+		}
+		return memo
+	end
 
-
-
-
+	def multiply_els(list)
+		list.my_inject(1) { |product, element| product * element }
+	end
 end
+
+
+
+
 
