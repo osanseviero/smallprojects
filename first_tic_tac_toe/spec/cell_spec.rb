@@ -1,11 +1,19 @@
 require 'spec_helper'
 
-describe TicTacToe do
-  it 'has a version number' do
-    expect(TicTacToe::VERSION).not_to be nil
-  end
+module TicTacToe
+	describe Cell do
+		context "#initialize" do
+			it "is initialized with a value of '' by default" do
+				cell = Cell.new
+				expect(cell.value).to eq ''
+			end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
-  end
+			it  "can be initialized with a value of X" do
+				cell = Cell.new("X")
+				expect(cell.value).to eq "X"
+			end
+
+		end
+
+	end
 end
