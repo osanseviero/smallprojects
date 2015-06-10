@@ -26,17 +26,25 @@ class Board
       row.each { |cell| print cell + " " }
       puts ''
 		}
+		puts ' '
 	end
 
 	#Updates the cell
-	def update(pos, sym)
-		if @board[pos] != @empty_cell
-			puts "This cell has something!"
+	def update(row, cell, sym)
+		if @board[row][cell] != @empty_cell
+			puts "This cell has something, try again!"
 			return false
+		else
+			@board[row][cell] = sym
+			return true
 		end
 	end
 
 end
 
 board = Board.new
+board.print_grid()	
+board.update(1,1,'X')
+board.print_grid()	
+board.update(1,1,'X')
 board.print_grid()	
