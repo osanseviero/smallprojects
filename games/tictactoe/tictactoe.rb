@@ -16,7 +16,7 @@ class Board
 	# Creates empty 3*3 grid
 	def initialize
 		@empty_cell = '_'
-		@board = Array.new(3, Array.new(3,@empty_cell))
+		@board = Array.new(3) {Array.new(3,@empty_cell)}
 	end
 
 	# Prints the grid
@@ -34,7 +34,7 @@ class Board
 		if @board[row][cell] != @empty_cell
 			puts "This cell has something, try again!"
 			return false
-		else
+		else	
 			@board[row][cell] = sym
 			return true
 		end
@@ -46,5 +46,5 @@ board = Board.new
 board.print_grid()	
 board.update(1,1,'X')
 board.print_grid()	
-board.update(1,1,'X')
+board.update(2,1,'X')
 board.print_grid()	
