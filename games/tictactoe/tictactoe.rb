@@ -1,18 +1,8 @@
-# Algorithm
-	# Player puts the name
-	# Empty board is displayed
-	# Game prompts and asks where is the next movement
-		# It checks if cell is empty 
-		# If the cell is not empty, fill it
-		# Then checks if the player wins
-		# Turn of next person
-	# Displays who wins or if it is a tie
-
 # Has all the game logic
 class Game
 	attr_reader :board, :p1, :p2
 	@@player = 0
-
+	@@turn = 0
 
 	# Creates the players and the grid
 	def initialize
@@ -20,6 +10,7 @@ class Game
 		@p1 = Player.new
 		@p2 = Player.new
 		players_data
+		play
 	end
 
 	# Prints players data
@@ -28,27 +19,55 @@ class Game
 		puts @p2.data
 	end
 
-	# This is a turn
-	def update
-
+	# This is the main game
+	def play
 		@board.print_grid
+		do_break = false
+		while !((@board.checkWin('X', @p1.name)) || (@board.checkWin('O', @p2.name)))
+			player_turn
+			if @@turn == 9
+				do_break = true
+			end
+			break if do_break
+		end
+		finish
+	end
+
+	# Each players turn
+	def player_turn
+		@@turn += 1
+		puts "It is the turn of player " + (@@player+1).to_s
 		puts "What row do you want to update?"
 		row = gets.chomp.to_i
 		puts "What column do you want to update?"
 		column = gets.chomp.to_i
 		if @@player == 0
 			@board.update(row, column, @p1.sym)
-			@board.print_grid
-			@board.checkWin('X')
+			@@player = 1
 		else
 			@board.update(row, column, @p2.sym)
-			@board.print_grid
-			@board.checkWin('O')
+			@@player = 0
 		end
+
+		@board.print_grid
 	end
 
-
-
+	# Winning or tie
+	def finish
+		if @@turn == 9
+			puts "It was a tie D:"
+		end
+		puts 'Do you want to start again?(yes/no)'
+		input = gets.chomp
+		if (input == 'no')
+			puts 'Bye bye'
+		elsif (input == 'yes')
+			puts 'Let\'s start again'
+			@board = Board.new
+			@@turn = 0
+			play
+		end
+	end
 
 	# Holds data for the players
 	class Player
@@ -110,13 +129,31 @@ class Game
 		end
 
 		# Checks if a player has won
-		def checkWin(sym)
+		def checkWin(sym, name)
 			if board[0].all? {|cell| cell.to_s == sym}
-				puts "FINISH"
-			else board[1].all? {|cell| cell.to_s == sym}
-				puts "FINISH"
-			else board[2].all? {|cell| cell.to_s == sym}
-				puts "FINISH"
+				puts name + ' has won!'
+				return true
+			elsif board[1].all? {|cell| cell.to_s == sym} 
+				puts name + ' has won!'
+				return true
+			elsif board[1].all? {|cell| cell.to_s == sym} 
+				puts name + ' has won!'
+				return true
+			elsif board[0][0] == sym && board[1][0] == sym && board[2][0] == sym
+				puts name + ' has won!'
+				return true
+			elsif board[0][1] == sym && board[1][1] == sym && board[2][1] == sym
+				puts name + ' has won!'
+				return true
+			elsif board[0][2] == sym && board[1][2] == sym && board[2][2] == sym
+				puts name + ' has won!'
+				return true
+			elsif board[0][0] == sym && board[1][1] == sym && board[2][2] == sym
+				puts name + ' has won!'
+				return true
+			elsif board[0][2] == sym && board[1][1] == sym && board[2][0] == sym
+				puts name + ' has won!'
+				return true
 			end
 
 		end
@@ -125,9 +162,3 @@ class Game
 end
 
 a = Game.new
-a.update
-a.update
-a.update
-a.update
-a.update
-a.update
