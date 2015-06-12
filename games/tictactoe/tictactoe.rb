@@ -136,7 +136,7 @@ class Game
 			elsif board[1].all? {|cell| cell.to_s == sym} 
 				puts name + ' has won!'
 				return true
-			elsif board[1].all? {|cell| cell.to_s == sym} 
+			elsif board[2].all? {|cell| cell.to_s == sym} 
 				puts name + ' has won!'
 				return true
 			elsif board[0][0] == sym && board[1][0] == sym && board[2][0] == sym
