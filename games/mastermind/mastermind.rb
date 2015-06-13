@@ -4,18 +4,28 @@
 
 # Holds all the game logic
 class Game
-	attr_accessor :code, :guess
+	attr_accessor :code, :guess, :turns
 
 	def initialize
-		@guess = []
+		userplay
+	end
+
+	
+	# When the user guess the code
+	def userplay
+		@win = false
 		generateCode
-		pguessCode
-		checkGuess
+		@turns = 4
+		while (!@win) && (@turns > 0)
+			pguessCode
+			checkGuess
+		end
+		endGame
 	end
 
 	# Computer generates a random code
 	def generateCode
-		options = ['R','G','B','Y','W','Bl']
+		options = ['R','G','B','Y','W','BL']
 		@code = options.sample(4)
 		puts @code
 	end
@@ -24,6 +34,7 @@ class Game
 	def pguessCode
 		puts "The options are: R/G/B/Y/W/BL"
 		counter = 1
+		@guess = []
 		4.times {
 			puts "Enter color at position #{counter}"
 			input = gets.chomp
@@ -45,6 +56,26 @@ class Game
 		}
 		puts "Correct position " + correct.to_s
 		puts "Color in wrong position " + position.to_s 
+		@win = true if correct == 4
+		if !@win 
+			@turns -= 1
+			puts "There are " + @turns.to_s + " turns left."
+		end
+	end
+
+	def endGame
+		if @win
+			puts "You won the game"
+		else
+			puts "You lost the game"
+		end
+		puts "Do you want to play agan (y/n)"
+		repeat = gets.chomp
+		if repeat == 'y'
+			userplay
+		else
+			puts "Bye bye :)"
+		end
 	end
 
 end
