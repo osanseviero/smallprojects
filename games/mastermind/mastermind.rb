@@ -15,7 +15,7 @@ class Game
 	def generateCode
 		options = ['R','G','B','Y','W','Bl']
 		@code = options.sample(4)
-		puts @code
+		puts @code.is_a? Array 
 	end
 
 end
