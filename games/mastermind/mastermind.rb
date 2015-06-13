@@ -7,8 +7,7 @@ class Game
 	attr_accessor :code, :guess, :turns
 
 	def initialize
-		gameType
-		
+		gameType	
 	end
 
 	# Decided if user plays or computer plays
@@ -74,10 +73,11 @@ class Game
 	# Computer guess the code
 	def computerPlay
 		puts "The computer will guess the code"
-		counter = 1
+		
 		@code = []
 		options = ['R','G','B','Y','W','BL']
 		puts "The options are: R/G/B/Y/W/BL"
+		counter = 1
 		4.times {
 			puts "Enter color at position #{counter}"
 			input = gets.chomp
@@ -85,15 +85,13 @@ class Game
 			counter +=1
 		}
 		puts "You code is " + @code.to_s
-		@win = true
-		4.times {
-			guess = options.sample(4)
-			puts "The computer guess " + guess.to_s
-			if guess == code
-				puts "The computer won"
-				@win = false
-			end
-		}
+		@win = false
+		@turns = 4
+		while (!@win) && (@turns > 0)
+			@guess = options.sample(4)
+			puts "The computer guessed " + @guess.to_s
+			checkGuess
+		end
 		endGame
 	end
 
