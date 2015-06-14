@@ -31,7 +31,7 @@ sentences = text.gsub(/\s+/,' ').split(/\.|\?|!/)
 sentences_sorted = sentences.sort_by {|sentence| sentence.length}
 one_third = sentences_sorted.length/3
 ideal_sentences = sentences_sorted.slice(one_third, one_third +1)
-ideal_sentences = ideal_sentences.select {|sentence| sentence =~ /is|are/}
+ideal_sentences = ideal_sentences.select {|sentence| sentence = /is|are/}
 
 # Info
 puts line_count.to_s + " lines"
