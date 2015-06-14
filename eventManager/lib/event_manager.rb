@@ -1,0 +1,1 @@
+puts 'EventManger initialized'
