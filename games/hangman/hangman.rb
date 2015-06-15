@@ -23,7 +23,6 @@ class Hangman
 		}
 		words.shuffle!
 		@secret_word = words[0]
-		puts @secret_word
 	end
 
 	# Some data
