@@ -1,0 +1,8 @@
+--- !ruby/object:Hangman
+win: false
+secret_word: 'mayoralty
+
+'
+character_count: 9
+guess_word: _a___a___
+turns: 9
