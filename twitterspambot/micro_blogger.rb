@@ -1,5 +1,6 @@
 require 'jumpstart_auth'
 require 'bitly'
+require 'klout'
 # 7198080
 class MicroBlogger
 	attr_reader :blog
@@ -7,6 +8,7 @@ class MicroBlogger
 	def initialize
 		puts "Initializing MicroBlogger"
 		@client = JumpstartAuth.twitter
+		Klout.api_key = 'xu9ztgnacmjx3bu82warbr3h'
 	end
 
 	def tweet(message)
@@ -56,10 +58,24 @@ class MicroBlogger
 	end
 
 	def shorten(original_url)
-		puts "Shortening this URL: #{original_url}"
-		bitly = Bitly.new('hungryacademy', 'R_430e9f62250186d2612cca76eee2dbc6')
-		return bitly.shorten(original_url).short_url
+		Bitly.use_api_version_3
+    bitly = Bitly.new('hungryacademy', 'R_430e9f62250186d2612cca76eee2dbc6')  
+    puts "Shortening this URL: #{original_url}"
+    return bitly.shorten(original_url).short_url
 	end
+
+	def klout_score
+    friends = @client.friends.collect { |f| @client.user(f).screen_name }
+    friends.each do |friend|
+      begin
+        identity = Klout::Identity.find_by_screen_name(friend)
+        user = Klout::User.new(identity.id)
+        puts "#{friend}: #{user.score.score}\n"
+      rescue
+        puts "User #{friend} score not available."
+      end
+    end
+  end
 
 
 	def run
@@ -77,6 +93,8 @@ class MicroBlogger
 				when 'dm' then dm(parts[1], parts[2..-1].join(" "))
 				when 'spam' then spam_my_followers(parts[1..-1].join(" "))
 				when 'elt' then everyones_last_tweet
+				when 'turl' then tweet(parts[1..-2].join(" ") + " " + shorten(parts[-1]))
+				when 'klout' then klout_score
 				else
 					puts "Sorry, I don't know how to #{command}"
 				end
