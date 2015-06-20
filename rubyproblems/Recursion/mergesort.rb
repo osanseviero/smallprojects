@@ -6,7 +6,6 @@ class MergeSort
         end
          
         # otherwise split the remaining elements in two
-        # I had to look this line on the web (source refactormycode.com)
         second_array = to_sort.slice!((to_sort.length / 2.0).round..to_sort.length)
                  
         # recursive method call on both arrays
