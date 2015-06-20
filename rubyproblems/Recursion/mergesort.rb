@@ -36,4 +36,4 @@ private
 end
 
 merge_sort = MergeSort.new
-puts merge_sort.sort([3,8,2,1])
+puts merge_sort.sort([3,8,2,1,102,10,3])
