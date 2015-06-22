@@ -7,6 +7,10 @@ class Game
 	# Creates the players and the grid
 	def initialize
 		@board = Board.new
+		
+	end
+
+	def create_players
 		@p1 = Player.new
 		@p2 = Player.new
 	end
