@@ -81,13 +81,13 @@ class Game
 		def initialize()
 			@@players += 1
 			puts 'Enter player ' + @@players.to_s + ' name'
-			@name = gets.chomp
+			@name =  STDIN.gets.chomp
 			@sym = @@symbols[@@players-1]
 		end
 
 		# Players data
 		def data
-			puts 'Hi ' + @name + '. Symbol: ' + @sym
+			return 'Hi ' + @name + '. Symbol: ' + @sym
 		end
 	end
 

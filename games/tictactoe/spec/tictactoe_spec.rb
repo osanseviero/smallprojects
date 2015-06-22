@@ -5,10 +5,12 @@ describe 'Game' do
 	before(:each) do 
 		allow(game).to receive(:puts)
 		allow(game).to receive(:print)
-		@p1 = Game::Player.new()
+	
+	end
+	before(:all) do
+			@p1 = Game::Player.new()
     @p2 = Game::Player.new()
-    @p1.name = 'osan'
-    @p2.name = 'mike'
+
 	end
 
 	describe "Player" do
@@ -26,7 +28,7 @@ describe 'Game' do
 
     context 'player' do
     	it 'has a name' do
-    		expect(@p1.name).to be_eq 'osan'
+    		expect(@p1.data).to be_eq('Hi osan. Symbol: X')
     	end
   	end
   end
