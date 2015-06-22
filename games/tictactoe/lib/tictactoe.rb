@@ -9,8 +9,6 @@ class Game
 		@board = Board.new
 		@p1 = Player.new
 		@p2 = Player.new
-		players_data
-		play
 	end
 
 	# Prints players data
@@ -160,5 +158,3 @@ class Game
 
 	end
 end
-
-a = Game.new
