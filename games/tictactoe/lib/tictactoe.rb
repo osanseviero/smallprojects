@@ -73,7 +73,7 @@ class Game
 
 	# Holds data for the players
 	class Player
-		attr_reader :name, :sym
+		attr_accessor :name, :sym
 		@@players = 0
 		@@symbols = ['X','O']
 
